@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+logs/
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# API keys and sensitive config
+backend/src/config/*.js
+!backend/src/config/db.js
+
+# Build outputs
+dist/
+build/
+
+# Vite and Next.js
+.next/
+.vercel/
+.output/
+
+# Misc
+*.local
+frontend/.env*
+backend/.env*
