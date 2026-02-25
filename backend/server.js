@@ -11,20 +11,23 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-  process.env.CLIENT_URL,           // production (exact)
-  process.env.CLIENT_URL_PREVIEW,   // optional exact preview URL
+  process.env.CLIENT_URL,           // e.g. https://blade-find.vercel.app
+  process.env.CLIENT_URL_PREVIEW,   // optional exact preview
 ].filter(Boolean);
+
+const vercelPreview = /^https:\/\/blade-find-.*\.vercel\.app$/; // adjust project prefix if needed
 
 app.use(cors({
   origin: (origin, cb) => {
-    if (!origin) return cb(null, true); // allow curl/postman
-    const isAllowed =
-      allowedOrigins.includes(origin) ||
-      /^https:\/\/blade-find-.*\.vercel\.app$/.test(origin);
-    cb(isAllowed ? null : new Error("Not allowed by CORS"), isAllowed);
+    if (!origin) return cb(null, true);
+
+    const ok = allowedOrigins.includes(origin) || vercelPreview.test(origin);
+    return cb(null, ok); // don't throw error; just disallow
   },
   credentials: true,
 }));
+
+app.options("*", cors());
 
 connectDB();
 
