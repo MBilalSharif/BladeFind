@@ -27,7 +27,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.options("/:path(*)", cors());
+
 
 connectDB();
 
