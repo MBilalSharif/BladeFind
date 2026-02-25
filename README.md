@@ -1,119 +1,62 @@
-# ✂️ BladeFind — Barber Shop Discovery App
+# 💈 BladeFind
 
-**BladeFind** is a MERN stack barber shop discovery app with a futuristic dark neon UI.
+BladeFind is a modern, map-driven web application that makes finding the perfect barbershop effortless. Whether you’re new to an area or just looking for a better cut, BladeFind lets you explore nearby barbers, view detailed shop information, and make informed decisions based on real reviews.
 
----
+# 🚀 Features
 
-## 🎨 Design System
+# 📍 Discover Barbers Near You
+Find barbershops around your current location using interactive maps.
 
-The UI is based on the BladeFind Lovable design:
-- **Theme**: Dark background (`hsl(220 20% 6%)`) with neon cyan primary (`hsl(180 80% 55%)`)
-- **Glass UI**: `.glass` and `.glass-strong` for frosted panels
-- **Neon effects**: `.neon-glow`, `.neon-glow-sm`, `.neon-text`
-- **3D cards**: `.card-3d` — perspective tilt on hover
-- **Map**: Dark custom styled Google Map, floating neon circle markers
-- **Fonts**: Space Grotesk (display) + Inter (body)
+# 🗺️ Map-Based Exploration
+Browse shops visually on the map and easily navigate your neighborhood.
 
----
+# 🏪 Detailed Shop Profiles
+View descriptions, services, images, location details, and user reviews for each barbershop.
 
-## 📁 Project Structure
+# ⭐ Reviews & Ratings
+See what other users are saying before choosing a shop.
 
-```
-Vibe Coding/
-├── README.md
-├── backend/
-│   ├── server.js
-│   ├── .env.example
-│   └── src/
-│       ├── config/db.js
-│       ├── controllers/shopsController.js
-│       ├── middlewares/errorHandler.js
-│       ├── models/BarberShop.js
-│       ├── routes/shopRoutes.js
-│       └── services/placesService.js
-└── frontend/
-    ├── index.html
-    ├── vite.config.js
-    ├── tailwind.config.ts
-    ├── .env.example
-    └── src/
-        ├── App.jsx
-        ├── main.jsx
-        ├── index.css           ← All design tokens, glass, neon, grid-bg
-        ├── api/shopsApi.js
-        ├── hooks/useBarberShops.js
-        ├── components/
-        │   ├── Navbar.jsx      ← Fixed glass navbar, BLADEFIND logo
-        │   ├── SearchBar.jsx   ← Hero + compact variants
-        │   ├── ShopCard.jsx    ← 3D card, glass, neon open dot
-        │   ├── MapView.jsx     ← Google Maps + dark style + markers
-        │   └── ShopList.jsx
-        └── pages/
-            ├── Index.jsx       ← Hero section + featured shops
-            ├── ShopListing.jsx ← Filter + grid view
-            ├── MapView.jsx     ← Full-height map + sidebar
-            └── NotFound.jsx
-```
+# 🔐 Google Sign-In
+Fast and secure authentication using your Google account.
 
----
+# 🛠️ Tech Stack
 
-## ⚙️ Google Cloud Setup
+This project is built using the MERN stack:
 
-Enable these APIs in your Google Cloud project:
-1. **Maps JavaScript API** (frontend map rendering)
-2. **Places API** (backend shop search)
-3. **Geocoding API** (optional, for address resolution)
+MongoDB – Database for storing users, shops, and reviews
 
-Restrict your **frontend key** to your domain. Keep the **backend key** server-side only.
+Express.js – Backend framework
 
----
+React.js – Frontend user interface
 
-## 🚀 Local Development
+Node.js – Server-side runtime
 
-### 1. Backend
+# 🌍 APIs & Integrations
 
-```bash
-cd "Vibe Coding/backend"
-npm install
-cp .env.example .env
-# Edit .env: set MONGO_URI and GOOGLE_MAPS_API_KEY
-npm run dev
-# → Runs on http://localhost:5000
-```
+# 🗺️ Google Maps Platform
+Used to display maps, locate nearby barbers, and enhance location-based browsing.
 
-### 2. Frontend
+# 🔑 Google OAuth
+Enables secure and seamless user authentication.
 
-```bash
-cd "Vibe Coding/frontend"
-npm install
-cp .env.example .env
-# Edit .env: set VITE_GOOGLE_MAPS_KEY
-npm run dev
-# → Runs on http://localhost:5173
-```
+# 🎯 Project Goal
 
-### 3. Open in browser
+BladeFind aims to simplify the process of finding quality barbershops by combining location awareness, rich shop details, and trusted user feedback into a single, easy-to-use platform.
 
-```
-http://localhost:5173
-```
+# 📸 Screenshots
+<img width="1339" height="678" alt="image" src="https://github.com/user-attachments/assets/2549e71f-af84-43ca-a624-05906a9a34c3" />
+<img width="1350" height="679" alt="image" src="https://github.com/user-attachments/assets/d70b9893-ff01-4196-a97d-fe8ce609095c" />
+<img width="1336" height="682" alt="image" src="https://github.com/user-attachments/assets/e1bc3ed2-4724-4ca3-ab7f-ab42eec27ad3" />
+<img width="1359" height="676" alt="image" src="https://github.com/user-attachments/assets/200f27b8-503e-4a0d-80a8-f30d5cec7286" />
 
----
+<img width="1272" height="643" alt="image" src="https://github.com/user-attachments/assets/7703b7b1-59c4-4d35-88ca-f9b377f9f333" />
 
-## 🔌 API Reference
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/health` | Health check |
-| GET | `/api/shops/nearby?lat=&lng=&radius=` | GPS-based shop search |
-| GET | `/api/shops/search?query=&radius=` | Text-based shop search |
-| GET | `/api/shops/photo?photoReference=&maxWidth=` | Proxied Google Place photo |
+# 🤝 Contributing
 
----
+Contributions, ideas, and improvements are always welcome!
+Feel free to fork the project and submit a pull request.
 
-## 🔑 Security Notes
+# 📄 License
 
-- `GOOGLE_MAPS_API_KEY` (backend `.env`) — server-side only, never exposed to browser
-- `VITE_GOOGLE_MAPS_KEY` (frontend `.env`) — browser key, restrict to your domain in GCP Console
-- Shop photos proxied through `/api/shops/photo` to keep backend key hidden
-- MongoDB shop data cached for 12h to reduce Places API quota usage
+This project is open-source and available under the MIT License.
