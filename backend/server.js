@@ -20,12 +20,15 @@ const vercelPreview = /^https:\/\/blade-find-.*\.vercel\.app$/; // adjust projec
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin) return cb(null, true);
-
-    const ok = allowedOrigins.includes(origin) || vercelPreview.test(origin);
-    return cb(null, ok); // don't throw error; just disallow
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/blade-find-.*\.vercel\.app$/.test(origin);
+    cb(null, isAllowed);
   },
   credentials: true,
 }));
+
+
 
 
 
